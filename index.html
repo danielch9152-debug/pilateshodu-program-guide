@@ -26,6 +26,12 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--soft-cream);
             color: var(--deep-navy);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .program-card {
@@ -105,6 +111,32 @@
             height: 24px;
             background: var(--golden-brown);
             border-radius: 2px;
+        }
+        
+        /* 텍스트 복사 방지 추가 스타일 */
+        * {
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            -webkit-touch-callout: none !important;
+            -webkit-tap-highlight-color: transparent !important;
+        }
+        
+        /* 특정 요소에서만 텍스트 선택 허용 (필요한 경우) */
+        .allow-select {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
+        }
+        
+        /* 입력 필드가 있는 경우를 위한 예외 처리 */
+        input, textarea {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
         }
         
         .faq-container {
@@ -2356,6 +2388,122 @@
             });
         }
         
+        // 텍스트 복사 방지 함수
+        function preventTextCopy() {
+            // 전체 문서에 복사 방지 이벤트 리스너 추가
+            document.addEventListener('copy', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 전체 문서에 잘라내기 방지 이벤트 리스너 추가
+            document.addEventListener('cut', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 전체 문서에 붙여넣기 방지 이벤트 리스너 추가
+            document.addEventListener('paste', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 전체 문서에 선택 방지 이벤트 리스너 추가
+            document.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 전체 문서에 드래그 방지 이벤트 리스너 추가
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 전체 문서에 마우스 오른쪽 클릭 방지
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            });
+            
+            // 키보드 단축키로 복사 방지
+            document.addEventListener('keydown', function(e) {
+                // Ctrl+C, Ctrl+X, Ctrl+V, Ctrl+A 등 복사 관련 키 조합 방지
+                if (e.ctrlKey || e.metaKey) {
+                    if (e.key === 'c' || e.key === 'C' ||  // 복사
+                        e.key === 'x' || e.key === 'X' ||  // 잘라내기
+                        e.key === 'v' || e.key === 'V' ||  // 붙여넣기
+                        e.key === 'a' || e.key === 'A' ||  // 전체 선택
+                        e.key === 'u' || e.key === 'U' ||  // 소스 보기
+                        e.key === 's' || e.key === 'S' ||  // 저장
+                        e.key === 'i' || e.key === 'I' ||  // 개발자 도구
+                        e.key === 'j' || e.key === 'J' ||  // 개발자 도구
+                        e.key === 'f' || e.key === 'F') {  // 찾기
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }
+                }
+                
+                // F12 키 방지
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+                
+                // Shift+F10 (오른쪽 클릭 메뉴) 방지
+                if (e.shiftKey && e.key === 'F10') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                }
+            });
+            
+            // 터치 디바이스에서 길게 누르기 방지
+            document.addEventListener('touchstart', function(e) {
+                let touchTimer = setTimeout(function() {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, 500);
+                
+                document.addEventListener('touchend', function() {
+                    clearTimeout(touchTimer);
+                }, { once: true });
+            });
+            
+            // 개발자 도구 감지 및 방지 (기존 함수와 통합)
+            let devtools = {open: false, orientation: null};
+            setInterval(() => {
+                const threshold = 160;
+                if (window.outerHeight - window.innerHeight > threshold || 
+                    window.outerWidth - window.innerWidth > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        console.warn('개발자 도구 사용이 감지되었습니다.');
+                        // 개발자 도구 감지 시 페이지 내용 숨기기
+                        document.body.style.visibility = 'hidden';
+                        setTimeout(() => {
+                            document.body.style.visibility = 'visible';
+                        }, 1000);
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+            
+            // iframe 내에서 실행되는 경우 부모 창으로부터 보호
+            if (window.self !== window.top) {
+                window.top.location.href = window.self.location.href;
+            }
+        }
+        
         // 오디오 플레이어 초기화 함수
         function initAudioPlayer() {
             const audio = document.getElementById('ai-guide-audio');
@@ -2850,6 +2998,9 @@
             allAudioElements.forEach(audio => {
                 preventAudioDownload(audio);
             });
+            
+            // 텍스트 복사 방지 기능 초기화
+            preventTextCopy();
 
         });
     </script>
