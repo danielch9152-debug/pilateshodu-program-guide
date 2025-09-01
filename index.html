@@ -1,0 +1,2785 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필라테스 호두 강사 교육 포털 - 프로그램 가이드</title>
+    <meta name="description" content="필라테스 호두 강사 및 직원을 위한 전문 프로그램 교육 가이드">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --deep-navy: #001F3F;
+            --golden-brown: #996515;
+            --warm-beige: #F5F1E8;
+            --soft-cream: #FEFCF8;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--soft-cream);
+            color: var(--deep-navy);
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 31, 63, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(153, 101, 21, 0.1);
+            min-height: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 31, 63, 0.15);
+        }
+        
+        .program-header {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--golden-brown) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .program-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .program-content {
+            padding: 2.5rem;
+            background: var(--soft-cream);
+        }
+        
+        .highlight-section {
+            background: var(--warm-beige);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid var(--golden-brown);
+            box-shadow: 0 4px 15px rgba(153, 101, 21, 0.1);
+        }
+        
+        .content-section {
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(153, 101, 21, 0.1);
+        }
+        
+        .content-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: var(--deep-navy);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--golden-brown);
+            border-radius: 2px;
+        }
+        
+        .faq-container {
+            background: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(153, 101, 21, 0.1);
+        }
+        
+        .faq-item {
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: var(--warm-beige);
+            border-radius: 0.5rem;
+            border-left: 4px solid var(--golden-brown);
+        }
+        
+        .faq-question {
+            color: var(--deep-navy);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .faq-answer {
+            color: var(--deep-navy);
+            line-height: 1.8;
+        }
+        
+        .reference-section {
+            background: var(--deep-navy);
+            color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .reference-title {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: var(--soft-cream);
+        }
+        
+        .reference-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .reference-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--warm-beige);
+        }
+        
+        .reference-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .ai-guide-card {
+            background: linear-gradient(135deg, var(--golden-brown) 0%, var(--deep-navy) 100%);
+            color: white;
+            border-radius: 1rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ai-guide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .ai-guide-link {
+            display: inline-block;
+            background: var(--soft-cream);
+            color: var(--deep-navy);
+            padding: 1rem 2.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .ai-guide-link:hover {
+            background: var(--warm-beige);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Audio Player Styles */
+        .audio-player-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .audio-player {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            border-radius: 0.5rem;
+            background: var(--soft-cream);
+            /* 안드로이드 호환성을 위한 추가 스타일 */
+            -webkit-appearance: none;
+            appearance: none;
+            height: 60px;
+            cursor: pointer;
+        }
+        
+        /* Webkit 브라우저 (Chrome, Safari) 스타일 */
+        .audio-player::-webkit-media-controls-panel {
+            background: var(--soft-cream);
+            border-radius: 0.5rem;
+        }
+        
+        .audio-player::-webkit-media-controls-play-button {
+            background: var(--golden-brown);
+            border-radius: 50%;
+        }
+        
+        .audio-player::-webkit-media-controls-timeline {
+            background: var(--warm-beige);
+            border-radius: 0.25rem;
+            height: 8px;
+        }
+        
+        .audio-player::-webkit-media-controls-current-time-display,
+        .audio-player::-webkit-media-controls-time-remaining-display {
+            color: var(--deep-navy);
+            font-weight: 600;
+        }
+        
+        /* Firefox 브라우저 스타일 */
+        .audio-player::-moz-range-track {
+            background: var(--warm-beige);
+            border-radius: 0.25rem;
+            height: 8px;
+        }
+        
+        .audio-player::-moz-range-thumb {
+            background: var(--golden-brown);
+            border: none;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        /* 안드로이드 기본 오디오 컨트롤 강제 표시 */
+        .audio-player::-webkit-media-controls {
+            display: flex !important;
+            opacity: 1 !important;
+        }
+        
+        .audio-player::-webkit-media-controls-timeline {
+            display: block !important;
+            opacity: 1 !important;
+        }
+        
+        /* 모바일 디바이스에서 진행 바 강제 표시 */
+        @media (max-width: 768px) {
+            .audio-player {
+                height: 70px;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+            
+            .audio-player::-webkit-media-controls-timeline {
+                display: block !important;
+                opacity: 1 !important;
+                height: 12px;
+            }
+        }
+        
+        .audio-info {
+            text-align: center;
+            color: var(--soft-cream);
+        }
+        
+        .audio-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--soft-cream);
+        }
+        
+        .audio-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--warm-beige);
+            opacity: 0.9;
+        }
+        
+        .audio-duration {
+            font-size: 0.9rem;
+            color: var(--warm-beige);
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .nav-header {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 31, 63, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-link {
+            color: var(--deep-navy);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--golden-brown);
+            background: var(--warm-beige);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--golden-brown) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .eye-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .eye {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background: var(--soft-cream);
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--golden-brown);
+        }
+        
+        .pupil {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--deep-navy);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease-out;
+        }
+        
+        .eye-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--soft-cream);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+        
+        .program-content {
+            padding: 2.5rem;
+            background: var(--soft-cream);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .program-content {
+                padding: 1.5rem;
+            }
+            
+            .program-header {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px; /* 네비게이션 헤더 높이 + 여백 */
+        }
+        
+        /* 스크롤 타겟 섹션에 대한 추가 스타일 */
+        .program-card {
+            scroll-margin-top: 100px; /* 스크롤 시 상단 여백 확보 */
+        }
+        
+        strong {
+            color: var(--deep-navy);
+            font-weight: 700;
+        }
+        
+        em {
+            color: var(--golden-brown);
+            font-style: italic;
+            font-weight: 500;
+        }
+        
+        /* Eye movement animation */
+        .pupil {
+            transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Mobile Menu Styles */
+        .mobile-menu-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1000;
+        }
+        
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: var(--deep-navy);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        /* 햄버거 메뉴 애니메이션 제거 - 항상 동일한 모양 유지 */
+        .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+            transform: none;
+            background: var(--deep-navy);
+        }
+        
+        .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+            opacity: 1;
+            background: var(--deep-navy);
+        }
+        
+        .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+            transform: none;
+            background: var(--deep-navy);
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -300px; /* 좌측에서 시작하여 숨김 */
+            width: 300px; /* 메뉴 너비 조정 */
+            height: 100vh;
+            background: linear-gradient(135deg, var(--deep-navy) 0%, var(--golden-brown) 100%);
+            z-index: 999;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            left: 0; /* 좌측에서 슬라이드 인 */
+        }
+        
+        .mobile-menu-header {
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .mobile-menu-title {
+            color: var(--soft-cream);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem 0;
+            flex: 1;
+        }
+        
+        .mobile-nav-link {
+            color: var(--soft-cream);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .mobile-nav-link:hover,
+        .mobile-nav-link:active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--soft-cream);
+            border-left-color: var(--golden-brown);
+            transform: translateX(5px);
+        }
+        
+        .mobile-nav-link i {
+            width: 20px;
+            text-align: center;
+            opacity: 0.8;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--soft-cream);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        /* 모바일 메뉴 오버레이 */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 기본 오디오 플레이어 중앙 정렬 */
+        .simple-audio-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .simple-audio-player {
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        /* PC 대화면에서 오디오 플레이어 완전 중앙 정렬 */
+        @media (min-width: 1024px) {
+            .simple-audio-container {
+                margin: 3rem auto;
+                max-width: 800px;
+            }
+            
+            .simple-audio-player {
+                max-width: 700px;
+            }
+        }
+
+/* PC 버전 최적화 */
+.audio-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.audio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.audio-title {
+    color: var(--deep-navy);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.audio-subtitle {
+    color: var(--golden-brown);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+    opacity: 0.95;
+    line-height: 1.3;
+}
+
+.audio-duration {
+    color: var(--deep-navy);
+    font-size: 0.95rem;
+    margin: 0;
+    opacity: 0.75;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-shrink: 0;
+    justify-content: flex-end;
+}
+
+.play-pause-btn {
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.play-pause-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.play-pause-btn:hover::before {
+    left: 100%;
+}
+
+.play-pause-btn:hover {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+}
+
+.play-pause-btn:active {
+    transform: translateY(0) scale(1.02);
+}
+
+/* 로딩 상태 시각적 피드백 */
+.play-pause-btn.loading {
+    opacity: 0.8;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(135deg, #654321 0%, #8B4513 100%) !important;
+}
+
+.play-pause-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid #8B4513;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.play-pause-btn.error {
+    opacity: 0.8;
+    cursor: pointer;
+    background: #dc3545 !important;
+}
+
+.play-pause-btn i {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.playback-speed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.playback-speed::before {
+    content: '속도';
+    font-size: 0.75rem;
+    color: var(--deep-navy);
+    opacity: 0.7;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.playback-speed select {
+    background: white;
+    border: 2px solid rgba(153, 101, 21, 0.15);
+    border-radius: 0.75rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--deep-navy);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    text-align: center;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23995515' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1.2em;
+    padding-right: 2.5rem;
+    /* 모바일 터치 최적화 */
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.playback-speed select:hover {
+    border-color: var(--golden-brown);
+    box-shadow: 0 4px 12px rgba(153, 101, 21, 0.15);
+    transform: translateY(-1px);
+}
+
+.playback-speed select:focus {
+    outline: none;
+    border-color: var(--golden-brown);
+    box-shadow: 0 0 0 3px rgba(153, 101, 21, 0.1);
+}
+
+.audio-progress {
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+}
+
+.progress-bar {
+    position: relative;
+    height: 0.75rem;
+    background: rgba(153, 101, 21, 0.08);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(153, 101, 21, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--golden-brown) 0%, var(--deep-navy) 100%);
+    border-radius: 0.5rem;
+    width: 0%;
+    transition: width 0.15s ease;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.progress-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+    /* 모바일 터치 최적화 */
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.progress-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--golden-brown);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 3px solid white;
+    transition: all 0.2s ease;
+    /* 모바일 터치 최적화 */
+    min-height: 44px;
+    touch-action: manipulation;
+}
+
+.progress-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.progress-slider::-moz-range-thumb {
+    width: 1.25rem;
+    height: 1.25rem;
+    background: var(--golden-brown);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.progress-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--deep-navy);
+    opacity: 0.85;
+    font-weight: 500;
+    padding: 0 0.25rem;
+}
+
+.audio-controls-secondary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+}
+
+.skip-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skip-btn {
+    background: rgba(153, 101, 21, 0.08);
+    border: 2px solid rgba(153, 101, 21, 0.15);
+    border-radius: 0.75rem;
+    padding: 0.6rem 1rem;
+    color: var(--deep-navy);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    min-width: 80px;
+    justify-content: center;
+}
+
+.skip-btn:hover {
+    background: rgba(153, 101, 21, 0.15);
+    border-color: var(--golden-brown);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(153, 101, 21, 0.15);
+}
+
+.skip-btn:active {
+    transform: translateY(0);
+}
+
+.skip-btn i {
+    font-size: 0.9rem;
+    color: var(--golden-brown);
+}
+
+.skip-text {
+    color: var(--deep-navy);
+    font-weight: 600;
+}
+
+.audio-volume {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0 0.5rem;
+}
+
+.volume-btn {
+    background: none;
+    border: none;
+    color: var(--deep-navy);
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.volume-btn:hover {
+    background: rgba(153, 101, 21, 0.1);
+    color: var(--golden-brown);
+    transform: scale(1.1);
+}
+
+.volume-btn:active {
+    transform: scale(0.95);
+    background-color: rgba(153, 101, 21, 0.15);
+}
+
+.volume-btn i {
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.volume-slider {
+    flex: 1;
+    position: relative;
+}
+
+.volume-range {
+    width: 100%;
+    height: clamp(0.4rem, 2vw, 0.6rem);
+    background: rgba(153, 101, 21, 0.15);
+    border-radius: 0.25rem;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid rgba(153, 101, 21, 0.2);
+    -webkit-appearance: none;
+    appearance: none;
+    transition: all 0.2s ease;
+}
+
+.volume-range:focus {
+    outline: 2px solid var(--golden-brown);
+    outline-offset: 2px;
+}
+
+.volume-range::-webkit-slider-thumb {
+    appearance: none;
+    width: clamp(1rem, 3vw, 1.5rem);
+    height: clamp(1rem, 3vw, 1.5rem);
+    background: var(--golden-brown);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease;
+}
+
+.volume-range::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+    .volume-range::-webkit-slider-thumb:active {
+        transform: scale(1.1);
+    }
+
+    .volume-range::-moz-range-thumb {
+    width: clamp(1rem, 3vw, 1.5rem);
+    height: clamp(1rem, 3vw, 1.5rem);
+    background: var(--golden-brown);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* 태블릿 반응형 */
+@media (max-width: 1024px) {
+    .custom-audio-player {
+        padding: 1.75rem;
+    }
+    
+    .audio-header {
+        gap: 1.5rem;
+        margin-bottom: 1.75rem;
+    }
+    
+    .audio-title {
+        font-size: 1.35rem;
+    }
+    
+    .audio-subtitle {
+        font-size: 1.05rem;
+    }
+    
+    .audio-controls {
+        gap: 1.25rem;
+    }
+    
+    .play-pause-btn {
+        width: 3.25rem;
+        height: 3.25rem;
+    }
+}
+
+        /* 모바일 반응형 */
+        @media (max-width: 768px) {
+            .custom-audio-player {
+                padding: 1rem;
+                margin: 1rem 0;
+                border-radius: 1rem;
+            }
+            
+            .audio-header {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .audio-controls {
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .audio-title {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+            
+            .audio-subtitle,
+            .audio-duration {
+                text-align: center;
+            }
+            
+            .audio-controls-secondary {
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1.25rem;
+                align-items: center;
+            }
+            
+            .skip-controls {
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            .skip-btn {
+                min-width: 70px;
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .audio-volume {
+                justify-content: center;
+                gap: 1rem;
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .volume-range {
+                /* PC 버전과 동일한 디자인 보장 */
+                background: rgba(153, 101, 21, 0.15);
+                border: 1px solid rgba(153, 101, 21, 0.2);
+                border-radius: 0.25rem;
+            }
+            
+            .volume-btn {
+                width: 3.5rem;
+                height: 3.5rem;
+                padding: 0.75rem;
+            }
+            
+            .volume-btn i {
+                font-size: 1.2rem;
+            }
+            
+            .play-pause-btn {
+                font-size: clamp(1rem, 2.5vw, 1.2rem);
+            }
+            
+            .progress-slider {
+                min-height: clamp(2.5rem, 6vw, 3rem);
+            }
+            
+            .progress-slider::-webkit-slider-thumb {
+                width: clamp(1.2rem, 3vw, 1.5rem);
+                height: clamp(1.2rem, 3vw, 1.5rem);
+            }
+            
+            .playback-speed select {
+                min-height: clamp(2.5rem, 6vw, 3rem);
+                font-size: clamp(0.9rem, 2vw, 1rem);
+                padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(0.8rem, 2vw, 1rem);
+            }
+        }
+
+/* 작은 모바일 화면 */
+@media (max-width: 480px) {
+    .custom-audio-player {
+        padding: 1.25rem;
+    }
+    
+    .audio-header {
+        gap: 1.25rem;
+        margin-bottom: 1.25rem;
+    }
+    
+    .audio-title {
+        font-size: 1.2rem;
+    }
+    
+    .audio-subtitle {
+        font-size: 1rem;
+    }
+    
+    .audio-controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .playback-speed {
+        order: -1;
+    }
+    
+    .audio-progress {
+        margin-bottom: 1.25rem;
+    }
+    
+    .audio-controls-secondary {
+        gap: 1.25rem;
+        margin-top: 1rem;
+    }
+    
+    .skip-controls {
+        gap: 0.5rem;
+    }
+    
+    .skip-btn {
+        min-width: clamp(4rem, 12vw, 5rem);
+        padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.8rem);
+        font-size: clamp(0.7rem, 2vw, 0.8rem);
+    }
+    
+    .audio-volume {
+        flex-direction: row;
+        gap: clamp(0.5rem, 1.5vw, 0.75rem);
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .volume-range {
+        /* PC 버전과 동일한 디자인 보장 */
+        background: rgba(153, 101, 21, 0.15);
+        border: 1px solid rgba(153, 101, 21, 0.2);
+        border-radius: 0.25rem;
+    }
+    
+    .volume-btn {
+        padding: clamp(0.4rem, 1vw, 0.5rem);
+    }
+    
+    .volume-btn i {
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+}
+
+
+        
+        /* Floating Top Button */
+        .floating-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--golden-brown);
+            color: var(--soft-cream);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(153, 101, 21, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+        
+        .floating-top-btn.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .floating-top-btn:hover {
+            background: var(--deep-navy);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 31, 63, 0.4);
+        }
+        
+        .floating-top-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        @media (max-width: 768px) {
+            .floating-top-btn {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+        }
+
+        /* AI 가이드 사용법 안내 스타일 */
+        .audio-usage-tip {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-usage-tip p:first-child {
+            color: var(--soft-cream);
+            font-weight: 600;
+        }
+
+        .audio-usage-tip p:last-child {
+            color: var(--warm-beige);
+            opacity: 0.9;
+        }
+
+        .audio-usage-tip .fa-lightbulb {
+            color: #FFD700;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px #FFD700); }
+            to { filter: drop-shadow(0 0 15px #FFD700); }
+        }
+        
+
+    </style>
+</head>
+<body class="smooth-scroll">
+    <!-- Navigation Header -->
+    <header class="nav-header">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl" style="color: var(--deep-navy);">
+                    <span style="font-family: 'Manrope', sans-serif; font-weight: 700;">PILATES</span>
+                    <span style="font-family: 'Manrope', sans-serif; color: var(--golden-brown); margin-left: 0.25rem; font-weight: 700;">HODU</span>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#ai-guide" class="nav-link">AI 가이드</a>
+                    <a href="#pain-rehab" class="nav-link">통증재활</a>
+                    <a href="#mannequin-tone" class="nav-link">마네킹톤</a>
+                    <a href="#flat-scol" class="nav-link">플랫스콜</a>
+                    <a href="#golf" class="nav-link">골프</a>
+                    <a href="#kids" class="nav-link">키즈</a>
+                    <a href="#prenatal" class="nav-link">프리내털</a>
+                    <a href="#senior" class="nav-link">시니어</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu">
+                <div class="mobile-menu-header">
+                    <h3 class="mobile-menu-title">메뉴</h3>
+                    <button id="mobile-menu-close" class="mobile-menu-close" title="메뉴 닫기">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mobile-menu-content">
+                    <a href="#ai-guide" class="mobile-nav-link">
+                        <i class="fas fa-robot"></i>
+                        AI 가이드
+                    </a>
+                    <a href="#pain-rehab" class="mobile-nav-link">
+                        <i class="fas fa-heart"></i>
+                        통증재활
+                    </a>
+                    <a href="#mannequin-tone" class="mobile-nav-link">
+                        <i class="fas fa-dumbbell"></i>
+                        마네킹톤
+                    </a>
+                    <a href="#flat-scol" class="mobile-nav-link">
+                        <i class="fas fa-user-md"></i>
+                        플랫스콜
+                    </a>
+                    <a href="#golf" class="mobile-nav-link">
+                        <i class="fas fa-golf-ball"></i>
+                        골프
+                    </a>
+                    <a href="#kids" class="mobile-nav-link">
+                        <i class="fas fa-child"></i>
+                        키즈
+                    </a>
+                    <a href="#prenatal" class="mobile-nav-link">
+                        <i class="fas fa-baby"></i>
+                        프리내털
+                    </a>
+                    <a href="#senior" class="mobile-nav-link">
+                        <i class="fas fa-user-graduate"></i>
+                        시니어
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Floating Top Button -->
+    <button class="floating-top-btn" id="floating-top-btn" title="맨 위로">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container mx-auto px-6 relative z-10">
+            <h1 class="eye-title">
+                필라테스 호두 프로그램 가이드
+            </h1>
+            <div class="eye-container">
+                <div class="eye" id="left-eye">
+                    <div class="pupil" id="left-pupil"></div>
+                </div>
+                <div class="eye" id="right-eye">
+                    <div class="pupil" id="right-pupil"></div>
+                </div>
+            </div>
+            <p class="text-xl md:text-2xl opacity-90 max-w-4xl mx-auto mb-4">
+                강사 및 직원을 위한 전문적인 프로그램 교육 자료
+            </p>
+            <p class="text-lg opacity-80 max-w-3xl mx-auto">
+                7가지 맞춤형 케어 프로그램의 핵심 원리와 운영 가이드
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-6 py-12">
+        <!-- AI 가이드 섹션을 최상단에 배치 -->
+        <section id="ai-guide" class="ai-guide-card mb-12">
+            <div class="relative z-10">
+                <h2 class="text-4xl font-bold mb-4">
+                    <i class="fas fa-robot mr-3"></i>
+                    AI 강사 가이드
+                </h2>
+                <p class="text-xl mb-6 opacity-90">
+                    전문적인 프로그램 안내 오디오 가이드
+                </p>
+                <p class="text-base opacity-80 mb-8 max-w-2xl mx-auto">
+                    각 프로그램의 핵심 원리와 실무 적용 방법을 오디오 형태로 제공합니다. 
+                    편안하게 앉아서 전문 강사의 상세한 설명을 들어보세요.
+                </p>
+                
+                <!-- 숨겨진 오디오 요소 -->
+                <!-- 기본 오디오 플레이어 -->
+                <div class="simple-audio-container">
+                    <audio controls preload="auto" class="simple-audio-player">
+                        <source src="https://raw.githubusercontent.com/ysl1016/pilateshodu-program-guide/main/data/pilateshodu-program-guide.m4a" type="audio/mp4">
+                        브라우저가 오디오 재생을 지원하지 않습니다.
+                    </audio>
+                </div>
+
+
+
+                <!-- 사용자 경험 안내 문구 추가 -->
+                <div class="audio-usage-tip mt-6 text-center">
+                    <p class="text-lg opacity-90 font-medium">
+                        <i class="fas fa-lightbulb mr-2 text-yellow-400"></i>
+                        <strong>팁:</strong> 오디오를 재생한 후 아래 프로그램들을 스크롤하며 읽어보세요!
+                    </p>
+                    <p class="text-base opacity-80 mt-2">
+                        전문 강사의 설명을 들으면서 각 프로그램의 내용을 함께 학습하면 더욱 효과적입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid-container">
+            <!-- 통증재활 필라테스 Card -->
+            <div id="pain-rehab" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">통증재활 필라테스</h2>
+                    <p class="text-lg opacity-90">Pain Rehabilitation Pilates</p>
+                    <p class="text-base opacity-80 mt-2">만성 통증 완화를 위한 의학적 필라테스 재활 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>통증재활 필라테스</em>는 만성 통증으로 고통받는 환자들을 위한 <strong>의학적 필라테스 재활 프로그램</strong>입니다. 
+                            척추 질환, 관절염, 근육통 등 다양한 통증 원인에 대해 <em>개별 맞춤형 운동 처방</em>을 제공하며, 
+                            통증의 근본 원인을 해결하여 <strong>지속적인 통증 완화</strong>를 목표로 합니다.
+                        </p>
+                        <p class="leading-relaxed mt-4">
+                            박정은 대표원장의 <strong>메디컬필라테스 전문 지도</strong>로 1:1 맞춤형 재활을 진행하며, 
+                            의료진 협진이 필요할 경우 연계하여 <em>과학적 근거 기반</em>의 운동치료를 제공합니다. 
+                            통증클리닉 수석 운동치료실장을 역임한 전문성을 바탕으로 안전하고 효과적인 재활을 도모합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            통증재활 필라테스의 주요 목표는 <strong>통증 감소</strong>와 <strong>기능 회복</strong>입니다. 
+                            첫째, <em>근육 이완 및 스트레칭</em>을 통해 긴장된 근육을 풀어주고 통증을 완화합니다.
+                        </p>
+                        <p class="leading-relaxed">
+                            둘째, <strong>근력 강화</strong>를 통해 약화된 근육을 강화하여 통증의 재발을 방지하며, 
+                            <em>자세 교정</em>과 <strong>기능적 동작 개선</strong>을 통해 일상생활에서의 통증을 줄입니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            <em>만성 요통</em>, <em>목 디스크</em>, <em>허리 디스크</em> 등 척추 질환으로 고통받는 환자, 
+                            <em>관절염</em>, <em>근막통증증후군</em> 등 근골격계 질환 환자, 
+                            <em>수술 후 재활</em>이 필요한 환자에게 적합합니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 통증이 있을 때도 운동해도 되나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: <em>급성 통증</em>이 심할 때는 운동을 중단하고 전문의와 상담합니다. 
+                                <strong>만성 통증</strong>의 경우 <em>통증을 악화시키지 않는 범위</em>에서 
+                                가벼운 운동부터 시작하여 점진적으로 강도를 높입니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 얼마나 걸리면 통증이 줄어드나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 개인차가 있지만 일반적으로 <em>4-6주</em> 정도 꾸준히 운동하면 
+                                <strong>통증 감소</strong>를 느낄 수 있습니다. 
+                                <em>근력 강화</em>와 <em>자세 교정</em> 효과는 <strong>8-12주</strong> 후에 더욱 명확하게 나타납니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (통증재활 프로그램 설명)</li>
+                            <li>PART1_통증재활 프로그램의 기초 (2019) – 만성 통증의 정의 및 원인</li>
+                            <li>의학적 필라테스의 원리와 적용</li>
+                            <li>프로그램 구성 및 자문: 가정의학과/안티에이징 전문의 이용승</li>
+                            <li>Verena Geweniger & A. Bohlander, Pilates – A Teacher's Manual (2014) – Therapeutic Pilates 원리 및 사례</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 마네킹톤 필라테스 Card -->
+            <div id="mannequin-tone" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">마네킹톤 필라테스</h2>
+                    <p class="text-lg opacity-90">Mannequin Tone Program</p>
+                    <p class="text-base opacity-80 mt-2">체형 교정과 근력 강화를 위한 맞춤형 다이어트 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>마네킹톤</em>은 <strong>체형 교정과 근력 강화</strong>를 동시에 달성하는 맞춤형 다이어트 프로그램입니다. 
+                            단순한 체중 감량이 아닌 <em>근육량 증가와 체지방 감소</em>를 통해 <strong>건강한 체형 변화</strong>를 목표로 하며, 
+                            요요 현상 없이 <em>지속 가능한 다이어트</em>를 제공합니다.
+                        </p>
+                        <p class="leading-relaxed mt-4">
+                            <strong>의학적으로 안전한 다이어트 원칙</strong>에 기반하여, 단기간 무리한 감량이 아닌 <em>지속 가능한 체중감량</em>을 목표로 합니다. 
+                            메디컬필라테스 동작과 생활습관 교정을 병행하여, 건강하게 사이즈를 줄이고 바디라인을 만들어 드립니다. 
+                            식이조절 가이드와 함께 진행되며, 필요 시 의료기관과 협업하여 대사 건강을 관리합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            마네킹톤 프로그램의 주요 목표는 <strong>체형 교정</strong>과 <strong>대사율 향상</strong>입니다. 
+                            <em>근력 강화 운동</em>을 통해 <strong>기초 대사율</strong>을 높여 체지방 연소를 촉진합니다.
+                        </p>
+                        <p class="leading-relaxed">
+                            <em>유연성 향상</em>을 통해 <strong>자세 교정</strong>과 <em>균형감각</em>을 개선하며, 
+                            <strong>코어 강화</strong>를 통해 <em>허리 라인</em>을 개선하고 <strong>스트레스 해소</strong>를 제공합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            <em>체중 감량</em>을 원하는 성인 남녀, <em>체형 교정</em>이 필요한 분, 
+                            <em>근력 강화</em>를 통해 건강한 몸을 만들고 싶은 분에게 적합합니다. 
+                            특히 <strong>요요 현상</strong>을 경험한 분이나 <em>다이어트 실패</em> 경험이 있는 분에게 권장합니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 얼마나 걸리면 효과를 볼 수 있나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: <em>4-6주</em> 정도 꾸준히 운동하면 <strong>체형 변화</strong>를 느낄 수 있습니다. 
+                                <em>근력 향상</em>과 <em>유연성 개선</em>은 <strong>2-3주</strong> 후에 나타나기 시작하며, 
+                                <strong>체지방 감소</strong>와 <em>근육량 증가</em>는 <strong>6-8주</strong> 후에 더욱 명확하게 보입니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 요요 현상을 방지할 수 있나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, 가능합니다. <em>근력 강화</em>를 통해 <strong>기초 대사율</strong>을 높이고, 
+                                <em>지속 가능한 운동 습관</em>을 만들어 <strong>요요 현상</strong>을 방지합니다. 
+                                또한 <em>영양 관리</em>와 <strong>생활 습관 개선</strong>을 함께 진행하여 
+                                <em>장기적인 체중 유지</em>를 도모합니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (마네킹톤 프로그램 설명)</li>
+                            <li>PART2_마네킹톤 프로그램의 기초 (2019) – 체형 교정의 원리와 방법</li>
+                            <li>건강한 다이어트를 위한 필라테스 운동</li>
+                            <li>프로그램 구성 및 자문: 가정의학과/안티에이징 전문의 이용승</li>
+                            <li>PART4_마네킹톤프로그램_비만과 과체중의 이해 (2019) – 체중감량 목표 및 속도 가이드</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 플랫스콜 프로그램 Card -->
+            <div id="flat-scol" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">플랫스콜 프로그램</h2>
+                    <p class="text-lg opacity-90">Flat-Scol Program</p>
+                    <p class="text-base opacity-80 mt-2">척추측만증 특화 필라테스 교정 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>플랫스콜</em>은 <strong>척추측만증</strong> 특화 필라테스 교정 프로그램입니다. 
+                            독일 <em>슈로스 메소드(Schroth Method)</em>의 3차원 교정 원리를 필라테스에 접목하여, 
+                            정적 교정의 한계를 보완한 <strong>동적인 척추 교정 운동</strong>을 제공합니다. 
+                            특히 성장기 청소년과 성인의 척추측만증에 맞춤형 동작을 통해 Cobb 각도(척추 측만 정도) 진행을 억제하고, 
+                            통증 완화와 자세 개선을 도모합니다.
+                        </p>
+                        <p class="leading-relaxed mt-4">
+                            모든 세션은 <strong>슈로스 자격 인증 강사</strong>인 박정은 원장이 직접 진행하며, 
+                            국제 PMA 협회의 <em>Scoliosis Certificate</em>를 취득한 전문성을 바탕으로 
+                            회원 한 분 한 분의 만곡 유형에 맞는 섬세한 교정이 이루어집니다. 
+                            10년 이상 척추측만 환자를 지도한 경험을 통해 안전하고 효과적인 교정을 제공합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            <strong>척추 정렬 교정:</strong> 측만의 만곡을 3차원적으로 교정하여 척추의 정중정렬을 회복합니다. 
+                            <em>슈로스 5대 원칙</em> (디렉션, 회전교정 호흡 등)을 활용한 운동으로 만곡 각도 감소 및 자세 대칭성 향상.
+                        </p>
+                        <p class="leading-relaxed">
+                            <strong>근육 균형 강화:</strong> 측만으로 약화된 <em>척추주변근, 심부근육</em>을 강화하고 과긴장된 근육은 이완시켜 
+                            근육 불균형을 완화합니다. 특히 척추 만곡의 볼록쪽(convex) 근육은 강화, 오목쪽(concave) 근육은 이완과 스트레칭에 중점.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            <em>특발성 척추측만증</em> 진단을 받은 청소년 및 성인. Cobb 각도 10도 이상의 경증부터 교정 운동이 필요한 
+                            중등도 측만증까지 해당됩니다. 성장기 청소년의 경우 조기 교정을 통해 만곡 진행을 억제하려는 분, 
+                            성인의 경우 자세 개선과 통증 관리를 원하는 분에게 권장합니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 이 프로그램만으로 측만증이 완치되나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: <em>완치</em>의 개념보다는 <strong>관리와 개선</strong>으로 접근합니다. 성장기 청소년의 경우 꾸준한 운동으로 
+                                만곡 진행을 억제하거나 경미한 개선을 기대할 수 있습니다. 성인의 경우 각도 자체의 큰 변화는 어려울 수 있으나, 
+                                <strong>자세 향상과 통증 감소</strong> 등의 임상적 개선이 관찰됩니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 교정용 보조기(코르셋)를 착용 중인데 운동해도 되나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, 가능합니다. 보조기는 지정된 착용 시간 외에 운동할 때는 벗고 진행합니다. 운동을 통해 
+                                <strong>근육으로 척추를 지지</strong>하는 능력을 길러주면 보조기 착용 기간 단축에도 도움이 됩니다. 
+                                단, 보조기 착용으로 피부 압박 부위가 예민할 수 있으니 해당 부위 자극이 없도록 자세를 조정합니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (플랫스콜 프로그램 설명)</li>
+                            <li>PART3_플랫스콜 프로그램의 기초 (2019) – 척추측만증 정의 및 합병증</li>
+                            <li>슈로스 메소드 원리와 필라테스 적용</li>
+                            <li>강사 자격 – instructors.html (박정은 원장 자격: 슈로스 메소드 등)</li>
+                            <li>PART3_플랫스콜 프로그램의 기초 (2019) – 호흡/심혈관 영향, 슈로스 원리에 기초한 프로그램 개요</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 골프 필라테스 Card -->
+            <div id="golf" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">골프 필라테스</h2>
+                    <p class="text-lg opacity-90">Golf Pilates</p>
+                    <p class="text-base opacity-80 mt-2">골프 성능 향상을 위한 특화 필라테스 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>골프 필라테스</em>는 골프 선수와 골프 애호가를 위해 개발된 특화 필라테스 프로그램입니다. 
+                            골프 스윙에 필요한 근력과 유연성을 향상시켜 <strong>드라이버 비거리 증대</strong>와 안정적인 스윙을 도와주며, 
+                            반복적인 골프 동작으로 인한 부상 예방에 초점을 둡니다. TPI (Titleist Performance Institute) 
+                            골프 운동 원리를 접목하여, 코어 회전력 강화와 몸통 회전 가동범위 증대를 달성합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            <strong>비거리 향상:</strong> 힙 회전과 척추 회전 능력을 향상시켜 보다 강력한 <em>회전력</em>을 생성합니다. 
+                            드라이버 비거리 증대를 위해 하체-상체의 분리 움직임 및 지면반력 활용을 훈련합니다.
+                        </p>
+                        <p class="leading-relaxed">
+                            <strong>정확성 & 일관성 향상:</strong> 코어 안정화와 <em>균형 감각</em>을 길러 스윙 시 몸의 흔들림을 줄이고 
+                            임팩트 정확도를 높입니다. 어드레스 자세 교정과 피니시까지 <strong>스윙 밸런스 유지</strong>를 목표로 합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            골프 비거리나 스윙 폼을 개선하고 싶은 골퍼 (초보~상급 모두 가능). 라운드 후 허리나 어깨 통증을 느끼는 
+                            아마추어 골퍼. 프로 선수의 경우 오프시즌 체력훈련 또는 경기 시즌 중 컨디셔닝으로 활용 가능합니다. 
+                            또한 장시간 스크린골프/필드 라운딩으로 근육 피로가 누적된 골퍼에게 권장합니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 필라테스로 정말 드라이버 비거리가 늘어나나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, 많은 회원분들이 <strong>비거리 증가</strong>를 경험하셨습니다. 골프 필라테스는 몸통 회전 가동범위를 늘리고 
+                                파워를 내는 근육을 강화하기 때문에, 스윙 스피드가 올라가고 임팩트가 향상됩니다. 
+                                실제로 3개월간 주 1-2회 프로그램 후 평균 드라이버 비거리가 10~20야드 증가한 사례들이 있습니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 골프 칠 때 허리가 아픈데 이 프로그램으로 좋아질까요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, 허리 통증 완화에 도움이 됩니다. 반복적인 스윙으로 생긴 <strong>근육 불균형을 해소</strong>하고 
+                                코어를 강화하여 척추에 가해지는 부담을 줄여줍니다. 특히 허리 주변의 유연성과 안정성이 높아지면서 
+                                스윙 시 충격 흡수가 잘 되고, 잘못된 스윙 자세도 교정되어 통증이 줄어드는 효과가 있습니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (골프 필라테스 설명)</li>
+                            <li>Golf & Pilates Training 가이드 – 회전근개 강화 및 유연성 증진의 효과</li>
+                            <li>메디컬필라테스™ Golf Master 교재 – 골퍼를 위한 필라테스 프로그램 설계 원칙</li>
+                            <li>Titleist Performance Institute (TPI) 자료 – 골퍼 피트니스 요소</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 키즈/청소년 성장 필라테스 Card -->
+            <div id="kids" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">키즈/청소년 성장 필라테스</h2>
+                    <p class="text-lg opacity-90">Kids/Youth Growth Pilates</p>
+                    <p class="text-base opacity-80 mt-2">성장기 아동·청소년을 위한 맞춤형 발달 운동 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>키즈/청소년 성장 필라테스</em>는 성장기 아동과 청소년의 <strong>건강한 신체 발달</strong>을 지원하는 맞춤형 운동 프로그램입니다. 
+                            현대 아이들의 스마트폰, 게임 등으로 인한 <em>거북목, 라운드숄더</em> 등의 자세 문제를 해결하고, 
+                            성장판이 열려 있는 시기에 <strong>올바른 움직임 패턴</strong>을 습득하도록 도와줍니다. 
+                            재미있는 놀이 형태의 운동으로 아이들의 흥미를 유발하면서도 전문적인 운동 효과를 제공합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            <strong>성장 촉진 & 자세 교정:</strong> 성장기에 필요한 <em>척추 신장 운동</em>과 관절 가동범위 증대를 통해 키 성장을 돕고, 
+                            잘못된 자세 습관을 조기에 교정합니다. 특히 목과 어깨의 정렬을 개선하여 <strong>바른 체형</strong> 형성을 지원.
+                        </p>
+                        <p class="leading-relaxed">
+                            <strong>기초 체력 & 운동 능력 향상:</strong> 코어 안정성, 균형감각, 유연성을 기반으로 한 <em>기초 운동 능력</em>을 발달시켜 
+                            향후 다양한 스포츠 활동의 토대를 마련합니다. <strong>집중력과 신체 인식능력</strong> 향상으로 학습 능력에도 긍정적 영향.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            만 6세~18세 아동 및 청소년. 자세가 좋지 않거나 성장이 더딘 아이, 운동 부족으로 기초 체력이 약한 아이에게 특히 효과적입니다. 
+                            스마트폰 사용이 많아 거북목이나 굽은 등 문제가 있는 청소년, 집중력이 부족하거나 신체 협응력이 떨어지는 아이들에게 권장합니다. 
+                            또한 특정 스포츠를 시작하기 전 기초 체력을 다지고 싶은 아이들에게 적합합니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 아이가 필라테스를 재미있어할까요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, 키즈 프로그램은 <strong>놀이와 게임 형태</strong>로 구성되어 아이들이 재미있게 참여할 수 있습니다. 
+                                동물 움직임 따라하기, 밸런스 게임, 파트너 운동 등 다양한 활동으로 지루하지 않게 진행됩니다. 
+                                또한 <em>성취감과 자신감</em>을 느낄 수 있는 단계별 목표 설정으로 아이들의 지속적인 참여를 유도합니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 몇 살부터 시작할 수 있나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 일반적으로 <strong>만 6세부터</strong> 시작 가능합니다. 이 시기부터 기본적인 지시 사항을 이해하고 따라할 수 있으며, 
+                                집중력도 어느 정도 발달합니다. 다만 개인차가 있으므로 <em>아이의 발달 상태</em>를 고려하여 조정합니다. 
+                                더 어린 아이들의 경우 부모님과 함께하는 <strong>패밀리 클래스</strong> 형태로 참여할 수 있습니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (키즈 필라테스 설명)</li>
+                            <li>PART5_키즈 필라테스의 이론과 실제 (2020) – 성장기 신체 발달과 운동의 중요성</li>
+                            <li>아동 발달 운동학 – 연령별 운동 프로그램 설계 원칙</li>
+                            <li>청소년 자세 교정 가이드라인</li>
+                            <li>ACSM Youth Physical Activity Guidelines (2018)</li>
+                            <li>Pilates in Kids 워크숍 교재 (Balanced Body, 2019)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 프리내털&포스트내털 필라테스 Card -->
+            <div id="prenatal" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">프리내털 & 포스트내털 필라테스</h2>
+                    <p class="text-lg opacity-90">Prenatal & Postnatal Pilates</p>
+                    <p class="text-base opacity-80 mt-2">임신 전후 여성 건강을 위한 전문 케어 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>프리내털 & 포스트내털 필라테스</em>는 임신 준비부터 출산 후 회복까지, 여성의 <strong>임신 전후 건강 관리</strong>를 위한 전문 프로그램입니다. 
+                            임신 중에는 안전하고 효과적인 운동을 통해 <em>체중 관리와 체력 유지</em>를 돕고, 
+                            출산 후에는 <strong>복부 회복과 골반저근 강화</strong>에 중점을 둡니다. 
+                            산전산후 여성의 신체 변화를 깊이 이해한 전문 강사의 세심한 케어로 안전하고 효과적인 운동을 제공합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            <strong>임신 중 관리:</strong> <em>골반저근 강화</em>와 코어 안정성 유지로 출산을 위한 체력을 기르고, 
+                            임신 중 흔한 허리 통증, 골반 통증 완화를 도모합니다. 적절한 체중 증가와 <strong>순산 준비</strong>를 위한 근력 및 지구력 향상.
+                        </p>
+                        <p class="leading-relaxed">
+                            <strong>산후 회복:</strong> 늘어난 복직근(복부 근육 분리) 회복과 <em>골반 정렬 교정</em>을 통해 임신 전 몸매로 돌아가도록 지원합니다. 
+                            육아로 인한 어깨, 목 긴장 완화 및 <strong>전반적인 체력 회복</strong>으로 건강한 육아 생활을 돕습니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            <em>임신을 계획하는 여성</em>부터 <em>임신 중인 산모</em> (안정기 이후), <em>출산 후 6주 이후 산모</em>까지 포괄적으로 대상으로 합니다. 
+                            임신 중 <strong>체중 관리</strong>나 <strong>체력 유지</strong>가 필요한 분, 출산 후 <strong>복부나 골반 회복</strong>이 필요한 분에게 특히 효과적입니다. 
+                            <em>제왕절개 분만 후 회복 중인 산모</em>, <em>임신성 당뇨나 고혈압</em> 등으로 운동이 제한적인 경우에도 <strong>의사 소견 하에 적용 가능</strong>합니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 임신 중에 운동해도 안전한가요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, <strong>안전한 임신 중 운동</strong>은 오히려 산모와 태아에게 도움이 됩니다. 
+                                프리내털 필라테스는 임신 각 시기별 특성을 고려한 <em>안전한 동작</em>들로 구성되어 있으며, 
+                                절대 금기 동작(복부 압박, 과도한 스트레칭 등)은 철저히 배제합니다. 
+                                다만 고위험 임신이거나 특별한 의학적 상황이 있다면 담당 의사와 상담 후 시작하시기 바랍니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 제왕절개 후 언제부터 운동할 수 있나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 일반적으로 <strong>제왕절개 후 8~12주</strong> 정도 지나 의사의 허가를 받은 후 시작 가능합니다. 
+                                자연분만보다 회복 기간이 더 필요하므로 <em>절개 부위 회복 상태</em>를 확인한 후 진행합니다. 
+                                초기에는 호흡 운동과 가벼운 골반저근 운동부터 시작하여 단계적으로 강도를 높여나갑니다. 
+                                개인차가 있으므로 몸의 신호를 주의 깊게 관찰하며 진행합니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (프리내털 프로그램 설명)</li>
+                            <li>PART6_산전산후 필라테스 가이드 (2021) – 임신 중 안전 운동 원칙</li>
+                            <li>여성 건강과 운동 – 임신 전후 신체 변화와 운동 처방</li>
+                            <li>골반저근 회복 프로토콜</li>
+                            <li>Pilates – A Teacher's Manual (Geweniger & Bohlander, 2014) – Prenatal Pilates 지침</li>
+                            <li>대한산부인과학회 자료 – 임산부 운동 권고사항 (2022)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 시니어 필라테스 Card -->
+            <div id="senior" class="program-card">
+                <div class="program-header">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">시니어 필라테스</h2>
+                    <p class="text-lg opacity-90">Senior Pilates</p>
+                    <p class="text-base opacity-80 mt-2">노년기 건강과 활력을 위한 맞춤형 운동 프로그램</p>
+                </div>
+                
+                <div class="program-content">
+                    <div class="highlight-section">
+                        <h3 class="section-title">프로그램 개요</h3>
+                        <p class="leading-relaxed">
+                            <em>시니어 필라테스</em>는 60세 이상 노년층의 <strong>건강한 노화</strong>와 삶의 질 향상을 위한 특별히 설계된 프로그램입니다. 
+                            나이가 들면서 자연스럽게 감소하는 <em>근력, 균형감각, 유연성</em>을 개선하여 일상생활 능력을 유지하고, 
+                            낙상 위험을 줄이며 <strong>독립적인 생활</strong>을 지속할 수 있도록 돕습니다. 
+                            관절에 무리가 가지 않는 저강도 운동으로 안전하면서도 효과적인 운동을 제공합니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">운동 목표 및 기대 효과</h3>
+                        <p class="leading-relaxed mb-4">
+                            <strong>낙상 예방 & 균형감각 향상:</strong> 노년기 가장 위험한 <em>낙상 사고</em>를 예방하기 위해 균형감각과 반응시간을 개선합니다. 
+                            하지 근력 강화와 고유감각 훈련을 통해 <strong>안정적인 보행</strong>과 일상 동작 수행 능력을 향상시킵니다.
+                        </p>
+                        <p class="leading-relaxed">
+                            <strong>치매 예방 & 인지 기능 향상:</strong> 신체 운동과 인지 활동을 결합한 <em>이중 과제 훈련</em>으로 뇌 활성화를 촉진합니다. 
+                            집중력과 기억력 향상에 도움이 되며, <strong>사회적 활동</strong>을 통한 정서적 건강도 함께 증진됩니다.
+                        </p>
+                    </div>
+
+                    <div class="content-section">
+                        <h3 class="section-title">대상 고객 및 적응증</h3>
+                        <p class="leading-relaxed">
+                            만 60세 이상의 노년층으로, 기본적인 일상생활이 가능한 분들을 대상으로 합니다. 
+                            균형감각이 떨어지거나 낙상에 대한 두려움이 있는 분, 관절염이나 골다공증 등으로 운동에 제약이 있는 분에게 적합합니다. 
+                            치매 예방을 원하거나 사회적 활동을 통한 정서적 건강 증진을 원하는 분들에게도 권장합니다. 
+                            단, 심각한 심혈관 질환이나 급성 질병이 있는 경우 의사와 상담 후 참여하시기 바랍니다.
+                        </p>
+                    </div>
+
+                    <div class="faq-container">
+                        <h3 class="section-title">자주 묻는 질문</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 나이가 많은데 필라테스를 해도 될까요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 물론입니다! 시니어 필라테스는 <strong>나이와 체력에 맞춘</strong> 안전한 운동입니다. 
+                                관절에 무리가 가지 않는 저강도 운동으로 구성되어 있으며, 개인의 컨디션에 따라 
+                                <em>운동 강도와 난이도를 조절</em>합니다. 오히려 규칙적인 운동은 노화 과정을 늦추고 
+                                <strong>건강한 노년기</strong>를 만드는 데 큰 도움이 됩니다.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                Q: 관절염이 있어도 운동할 수 있나요?
+                            </div>
+                            <div class="faq-answer">
+                                A: 네, 가능합니다. 관절염이 있더라도 <strong>적절한 운동</strong>은 오히려 관절 건강에 도움이 됩니다. 
+                                시니어 필라테스는 관절에 충격을 주지 않는 <em>저충격 운동</em>으로 구성되어 있어 
+                                관절염 환자도 안전하게 참여할 수 있습니다. 운동을 통해 관절 주변 근육을 강화하고 
+                                <strong>관절 가동범위</strong>를 유지하여 관절염 증상 완화에도 도움이 됩니다.
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="reference-section">
+                        <h4 class="reference-title">참고 문헌 및 자료</h4>
+                        <ul class="reference-list">
+                            <li>프로그램 소개 – pilateshodu 웹사이트 programs.html (시니어 필라테스 설명)</li>
+                            <li>PART7_시니어 건강 운동학 (2022) – 노화와 운동의 상관관계</li>
+                            <li>낙상 예방을 위한 균형 훈련 가이드라인</li>
+                            <li>노인 운동 처방 매뉴얼</li>
+                            <li>ACSM Guidelines for Older Adults (2019)</li>
+                            <li>Pilates for Osteoporosis (2009) – 시니어 골다공증 필라테스 금기 동작 및 운동 효과</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // 네비게이션 헤더의 높이를 고려하여 스크롤 위치 조정
+                    const headerHeight = document.querySelector('.nav-header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20; // 20px 여백 추가
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll-triggered animations for program cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all program cards
+        document.querySelectorAll('.program-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(card);
+        });
+
+
+
+            // Interactive eye movement
+        function initEyeMovement() {
+            const leftEye = document.getElementById('left-eye');
+            const rightEye = document.getElementById('right-eye');
+            const leftPupil = document.getElementById('left-pupil');
+            const rightPupil = document.getElementById('right-pupil');
+
+            if (!leftEye || !rightEye || !leftPupil || !rightPupil) return;
+
+            function movePupil(eye, pupil, isRightEye = false) {
+                const eyeRect = eye.getBoundingClientRect();
+                const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+                const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+
+                return function(e) {
+                    const mouseX = e.clientX;
+                    const mouseY = e.clientY;
+
+                    // Calculate direction from eye center to mouse
+                    const deltaX = mouseX - eyeCenterX;
+                    const deltaY = mouseY - eyeCenterY;
+
+                    // Calculate distance
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+                    // Limit movement to keep pupil inside eye
+                    const maxMove = 25; // Maximum movement distance
+                    const moveX = Math.min(Math.abs(deltaX), maxMove) * (deltaX > 0 ? 1 : -1);
+                    const moveY = Math.min(Math.abs(deltaY), maxMove) * (deltaY > 0 ? 1 : -1);
+
+                    // Apply movement with slight offset for natural look
+                    const offsetX = isRightEye ? 2 : -2;
+                    const offsetY = -1;
+
+                    pupil.style.transform = `translate(calc(-50% + ${moveX + offsetX}px), calc(-50% + ${moveY + offsetY}px))`;
+                };
+            }
+
+            // Add event listeners
+            document.addEventListener('mousemove', movePupil(leftEye, leftPupil, false));
+            document.addEventListener('mousemove', movePupil(rightEye, rightPupil, true));
+
+            // Add touch support for mobile devices
+            document.addEventListener('touchmove', function(e) {
+                if (e.touches.length > 0) {
+                    const touch = e.touches[0];
+                    const mouseEvent = new MouseEvent('mousemove', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    document.dispatchEvent(mouseEvent);
+                }
+            });
+        }
+
+
+        
+        // Mobile menu functionality
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            if (!mobileMenuBtn || !mobileMenu || !mobileMenuOverlay) return;
+            
+            // Toggle mobile menu
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                mobileMenuOverlay.classList.add('active');
+                mobileMenuBtn.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Close mobile menu functions
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                mobileMenuOverlay.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Close button
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            // Overlay click to close
+            mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+            
+            // Close mobile menu when clicking on links
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                    
+                    // 모바일 메뉴 닫힌 후 스크롤 위치 조정
+                    setTimeout(() => {
+                        const href = this.getAttribute('href');
+                        if (href && href.startsWith('#')) {
+                            const target = document.querySelector(href);
+                            if (target) {
+                                const headerHeight = document.querySelector('.nav-header').offsetHeight;
+                                const targetPosition = target.offsetTop - headerHeight - 20;
+                                
+                                window.scrollTo({
+                                    top: targetPosition,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }
+                    }, 300); // 메뉴가 닫힌 후 스크롤 실행
+                });
+            });
+            
+            // Close on escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                    closeMobileMenu();
+                }
+            });
+            
+            // Close on swipe left (for mobile)
+            let startX = 0;
+            let currentX = 0;
+            
+            mobileMenu.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+            });
+            
+            mobileMenu.addEventListener('touchmove', function(e) {
+                currentX = e.touches[0].clientX;
+            });
+            
+            mobileMenu.addEventListener('touchend', function(e) {
+                const swipeDistance = startX - currentX;
+                if (swipeDistance > 50) { // 왼쪽으로 스와이프
+                    closeMobileMenu();
+                }
+            });
+        }
+        
+        // Floating top button functionality
+        function initFloatingTopBtn() {
+            const floatingTopBtn = document.getElementById('floating-top-btn');
+            
+            if (!floatingTopBtn) return;
+            
+            // Show/hide button based on scroll position
+            function toggleTopButton() {
+                if (window.pageYOffset > 300) {
+                    floatingTopBtn.classList.add('visible');
+                } else {
+                    floatingTopBtn.classList.remove('visible');
+                }
+            }
+            
+            // Scroll to top when button is clicked
+            floatingTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', toggleTopButton);
+            
+            // Initial check
+            toggleTopButton();
+        }
+        
+
+        
+        // 오디오 플레이어 초기화 함수
+        function initAudioPlayer() {
+            const audio = document.getElementById('ai-guide-audio');
+            
+            if (!audio) {
+                console.error('오디오 요소를 찾을 수 없습니다!');
+                return;
+            }
+            
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseIcon = playPauseBtn.querySelector('i');
+            const progressFill = document.getElementById('progress-fill');
+            const progressSlider = document.getElementById('progress-slider');
+            const currentTimeDisplay = document.getElementById('current-time');
+            const totalTimeDisplay = document.getElementById('total-time');
+            const volumeBtn = document.getElementById('volume-btn');
+            const volumeIcon = volumeBtn.querySelector('i');
+            const volumeRange = document.getElementById('volume-range');
+            const speedSelector = document.getElementById('speed-selector');
+            const skipBackward = document.getElementById('skip-backward');
+            const skipForward = document.getElementById('skip-forward');
+
+            let isPlaying = false;
+
+            // 볼륨 동기화 및 초기 설정
+            let systemVolume = 0.7;
+            let lastUserVolume = 0.7;
+            let isMuted = false;
+            
+            // 저장된 볼륨 설정 불러오기
+            const savedVolume = localStorage.getItem('audioVolume');
+            if (savedVolume !== null) {
+                lastUserVolume = parseFloat(savedVolume);
+                audio.volume = lastUserVolume;
+                volumeRange.value = lastUserVolume * 100;
+            } else {
+                audio.volume = 0.7;
+                volumeRange.value = 70;
+            }
+            
+            // 저장된 음소거 상태 불러오기
+            const savedMuteState = localStorage.getItem('audioMuted');
+            if (savedMuteState === 'true') {
+                isMuted = true;
+                audio.volume = 0;
+                volumeRange.value = 0;
+            }
+            
+            updateVolumeIcon(audio.volume);
+            
+            // MediaSession API 지원 확인 및 설정
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.setActionHandler('previoustrack', null);
+                navigator.mediaSession.setActionHandler('nexttrack', null);
+                navigator.mediaSession.setActionHandler('seekbackward', null);
+                navigator.mediaSession.setActionHandler('seekforward', null);
+                navigator.mediaSession.setActionHandler('seekto', null);
+                navigator.mediaSession.setActionHandler('stop', null);
+                
+                // 볼륨 변경 감지
+                navigator.mediaSession.setActionHandler('volumeup', () => {
+                    const newVolume = Math.min(1, audio.volume + 0.1);
+                    audio.volume = newVolume;
+                    volumeRange.value = newVolume * 100;
+                    
+                    // 볼륨을 올리면 음소거 상태 해제
+                    if (isMuted && newVolume > 0) {
+                        isMuted = false;
+                        localStorage.setItem('audioMuted', 'false');
+                    }
+                    
+                    updateVolumeIcon(newVolume);
+                    localStorage.setItem('audioVolume', newVolume.toString());
+                });
+                
+                navigator.mediaSession.setActionHandler('volumedown', () => {
+                    const newVolume = Math.max(0, audio.volume - 0.1);
+                    audio.volume = newVolume;
+                    volumeRange.value = newVolume * 100;
+                    
+                    // 볼륨을 내리면 음소거 상태 해제
+                    if (isMuted && newVolume > 0) {
+                        isMuted = false;
+                        localStorage.setItem('audioMuted', 'false');
+                    }
+                    
+                    updateVolumeIcon(newVolume);
+                    localStorage.setItem('audioVolume', newVolume.toString());
+                });
+            }
+            
+            // 디버깅: 볼륨 컨트롤 요소 확인
+            console.log('볼륨 컨트롤 요소들:', {
+                volumeBtn: volumeBtn,
+                volumeIcon: volumeIcon,
+                volumeRange: volumeRange,
+                initialVolume: audio.volume,
+                initialRangeValue: volumeRange.value
+            });
+            
+            // 볼륨 컨트롤 이벤트 리스너 등록 확인
+            console.log('볼륨 컨트롤 이벤트 리스너 등록 중...');
+            
+            // 볼륨 슬라이더 터치/마우스 이벤트 최적화
+            let volumeTouchStart = 0;
+            let volumeTouchStartValue = 0;
+            
+            volumeRange.addEventListener('mousedown', () => {
+                // 볼륨 슬라이더 마우스 이벤트
+            });
+
+            volumeRange.addEventListener('touchstart', (e) => {
+                volumeTouchStart = e.touches[0].clientY;
+                volumeTouchStartValue = parseFloat(volumeRange.value);
+            });
+            
+            volumeRange.addEventListener('touchmove', (e) => {
+                const touchY = e.touches[0].clientY;
+                const deltaY = volumeTouchStart - touchY;
+                const deltaPercent = (deltaY / 100) * 100; // 100px 이동당 100% 변화
+                const newValue = Math.max(0, Math.min(100, volumeTouchStartValue + deltaPercent));
+                
+                volumeRange.value = newValue;
+                const volume = newValue / 100;
+                audio.volume = volume;
+                lastUserVolume = volume;
+                
+                // 볼륨 슬라이더를 조작하면 음소거 상태 해제
+                if (isMuted && volume > 0) {
+                    isMuted = false;
+                    localStorage.setItem('audioMuted', 'false');
+                }
+                
+                updateVolumeIcon(volume);
+                localStorage.setItem('audioVolume', volume.toString());
+            });
+            
+            volumeRange.addEventListener('change', (e) => {
+                const volume = parseFloat(e.target.value) / 100;
+                
+                // 볼륨 슬라이더를 조작하면 음소거 상태 해제
+                if (isMuted && volume > 0) {
+                    isMuted = false;
+                    localStorage.setItem('audioMuted', 'false');
+                }
+            });
+
+            // 재생/일시정지 토글
+            playPauseBtn.addEventListener('click', async () => {
+                try {
+                    if (isPlaying) {
+                        audio.pause();
+                    } else {
+                        playPauseBtn.classList.add('loading');
+                        const playPromise = audio.play();
+                        if (playPromise !== undefined) {
+                            await playPromise;
+                        }
+                    }
+                } catch (error) {
+                    console.error('오디오 재생 오류:', error);
+                    playPauseBtn.classList.remove('loading');
+                }
+            });
+
+            // 오디오 이벤트 리스너
+            audio.addEventListener('play', () => {
+                isPlaying = true;
+                playPauseIcon.className = 'fas fa-pause';
+            });
+
+            audio.addEventListener('pause', () => {
+                isPlaying = false;
+                playPauseIcon.className = 'fas fa-play';
+            });
+
+            audio.addEventListener('loadstart', () => {
+                console.log('오디오 로딩 시작...');
+                playPauseBtn.classList.add('loading');
+            });
+
+            audio.addEventListener('loadedmetadata', () => {
+                console.log('오디오 메타데이터 로드 완료, 길이:', audio.duration);
+                const duration = audio.duration;
+                totalTimeDisplay.textContent = formatTime(duration);
+                progressSlider.max = duration;
+                playPauseBtn.classList.remove('loading');
+            });
+
+            audio.addEventListener('canplay', () => {
+                playPauseBtn.classList.remove('loading');
+            });
+
+            audio.addEventListener('error', (e) => {
+                console.error('오디오 로딩 에러:', e);
+                playPauseBtn.classList.remove('loading');
+                playPauseBtn.classList.add('error');
+            });
+
+            // 성능 최적화된 시간 업데이트
+            let lastUpdateTime = 0;
+            const UPDATE_THROTTLE = 100; // 100ms마다 업데이트
+            
+            audio.addEventListener('timeupdate', () => {
+                const currentTime = audio.currentTime;
+                const duration = audio.duration;
+                const now = Date.now();
+                
+                if (duration > 0 && (now - lastUpdateTime) > UPDATE_THROTTLE) {
+                    const progressPercent = (currentTime / duration) * 100;
+                    
+                    // requestAnimationFrame을 사용하여 부드러운 애니메이션
+                    requestAnimationFrame(() => {
+                        progressFill.style.width = progressPercent + '%';
+                        progressSlider.value = currentTime;
+                        currentTimeDisplay.textContent = formatTime(currentTime);
+                    });
+                    
+                    lastUpdateTime = now;
+                }
+            });
+
+            // 프로그레스 바 최적화된 시간 이동
+            let isSeeking = false;
+            
+            progressSlider.addEventListener('input', () => {
+                isSeeking = true;
+                const seekTime = progressSlider.value;
+                audio.currentTime = seekTime;
+            });
+            
+            progressSlider.addEventListener('change', () => {
+                isSeeking = false;
+            });
+            
+            // 터치 제스처 지원 (모바일)
+            let touchStartX = 0;
+            let progressTouchStartTime = 0;
+            
+            progressSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                progressTouchStartTime = audio.currentTime;
+            });
+            
+            progressSlider.addEventListener('touchmove', (e) => {
+                if (isSeeking) return;
+                
+                const touchX = e.touches[0].clientX;
+                const rect = progressSlider.getBoundingClientRect();
+                const percent = (touchX - rect.left) / rect.width;
+                const seekTime = percent * audio.duration;
+                
+                if (seekTime >= 0 && seekTime <= audio.duration) {
+                    audio.currentTime = seekTime;
+                    progressSlider.value = seekTime;
+                }
+            });
+            
+            // PC 마우스 이벤트 최적화
+            progressSlider.addEventListener('mousedown', () => {
+                isSeeking = true;
+            });
+            
+            progressSlider.addEventListener('mouseup', () => {
+                isSeeking = false;
+            });
+
+            // 볼륨 컨트롤 - 슬라이더
+            volumeRange.addEventListener('input', (e) => {
+                const volume = e.target.value / 100;
+                audio.volume = volume;
+                lastUserVolume = volume;
+                updateVolumeIcon(volume);
+                localStorage.setItem('audioVolume', volume.toString());
+                console.log('볼륨 변경:', volume);
+            });
+
+            // 볼륨 컨트롤 - 버튼 클릭 (음소거/음소거 해제)
+            volumeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (!isMuted) {
+                    // 음소거: 현재 볼륨을 저장하고 음소거
+                    lastUserVolume = audio.volume;
+                    isMuted = true;
+                    audio.volume = 0;
+                    volumeRange.value = 0;
+                    updateVolumeIcon(0);
+                    localStorage.setItem('audioMuted', 'true');
+                    console.log('음소거됨, 저장된 볼륨:', lastUserVolume);
+                } else {
+                    // 음소거 해제: 저장된 볼륨으로 복원
+                    isMuted = false;
+                    audio.volume = lastUserVolume;
+                    volumeRange.value = lastUserVolume;
+                    updateVolumeIcon(lastUserVolume);
+                    localStorage.setItem('audioMuted', 'false');
+                    console.log('음소거 해제, 볼륨 복원:', lastUserVolume);
+                }
+            });
+
+
+
+            // 10초 앞/뒤 스킵 기능
+            skipBackward.addEventListener('click', () => {
+                audio.currentTime = Math.max(0, audio.currentTime - 10);
+            });
+
+            skipForward.addEventListener('click', () => {
+                audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+            });
+
+            // 재생 속도 제어 최적화
+            let currentSpeed = 1.0;
+            
+            // 저장된 재생 속도 불러오기
+            const savedSpeed = localStorage.getItem('audioSpeed');
+            if (savedSpeed !== null) {
+                currentSpeed = parseFloat(savedSpeed);
+                audio.playbackRate = currentSpeed;
+                speedSelector.value = currentSpeed;
+            }
+            
+            // 재생 속도 변경 이벤트
+            speedSelector.addEventListener('change', () => {
+                const speed = parseFloat(speedSelector.value);
+                currentSpeed = speed;
+                audio.playbackRate = speed;
+                localStorage.setItem('audioSpeed', speed.toString());
+                
+                // 시각적 피드백 추가
+                speedSelector.style.transform = 'scale(1.05)';
+                speedSelector.style.borderColor = 'var(--golden-brown)';
+                
+                setTimeout(() => {
+                    speedSelector.style.transform = 'scale(1)';
+                    speedSelector.style.borderColor = 'rgba(153, 101, 21, 0.15)';
+                }, 200);
+                
+                console.log('재생 속도 변경:', speed);
+            });
+            
+            // 키보드 단축키로 재생 속도 조절
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+                
+                if (e.key === '>' || e.key === '.') {
+                    e.preventDefault();
+                    const newSpeed = Math.min(2, currentSpeed + 0.25);
+                    currentSpeed = newSpeed;
+                    audio.playbackRate = newSpeed;
+                    speedSelector.value = newSpeed;
+                    localStorage.setItem('audioSpeed', newSpeed.toString());
+                } else if (e.key === '<' || e.key === ',') {
+                    e.preventDefault();
+                    const newSpeed = Math.max(0.5, currentSpeed - 0.25);
+                    currentSpeed = newSpeed;
+                    audio.playbackRate = newSpeed;
+                    speedSelector.value = newSpeed;
+                    localStorage.setItem('audioSpeed', newSpeed.toString());
+                }
+            });
+
+            // 시간 포맷팅 함수
+            function formatTime(seconds) {
+                if (isNaN(seconds)) return '0:00';
+                
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = Math.floor(seconds % 60);
+                return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+            }
+
+            // 볼륨 아이콘 업데이트
+            function updateVolumeIcon(volume) {
+                if (volume === 0) {
+                    volumeIcon.className = 'fas fa-volume-mute';
+                    volumeBtn.title = '음소거 해제';
+                } else if (volume < 0.5) {
+                    volumeIcon.className = 'fas fa-volume-down';
+                    volumeBtn.title = '음소거';
+                } else {
+                    volumeIcon.className = 'fas fa-volume-up';
+                    volumeBtn.title = '음소거';
+                }
+            }
+
+            // 향상된 키보드 단축키 지원
+            document.addEventListener('keydown', (e) => {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+                
+                switch(e.code) {
+                    case 'Space':
+                        e.preventDefault();
+                        playPauseBtn.click();
+                        break;
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        audio.currentTime = Math.max(0, audio.currentTime - 10);
+                        break;
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        const newVolumeUp = Math.min(1, audio.volume + 0.1);
+                        audio.volume = newVolumeUp;
+                        volumeRange.value = newVolumeUp * 100;
+                        
+                        // 볼륨을 올리면 음소거 상태 해제
+                        if (isMuted && newVolumeUp > 0) {
+                            isMuted = false;
+                            localStorage.setItem('audioMuted', 'false');
+                        }
+                        
+                        updateVolumeIcon(newVolumeUp);
+                        localStorage.setItem('audioVolume', newVolumeUp.toString());
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        const newVolumeDown = Math.max(0, audio.volume - 0.1);
+                        audio.volume = newVolumeDown;
+                        volumeRange.value = newVolumeDown * 100;
+                        
+                        // 볼륨을 내리면 음소거 상태 해제
+                        if (isMuted && newVolumeDown > 0) {
+                            isMuted = false;
+                            localStorage.setItem('audioMuted', 'false');
+                        }
+                        
+                        updateVolumeIcon(newVolumeDown);
+                        localStorage.setItem('audioVolume', newVolumeDown.toString());
+                        break;
+                    case 'KeyM':
+                        e.preventDefault();
+                        volumeBtn.click();
+                        break;
+                    case 'KeyR':
+                        e.preventDefault();
+                        audio.currentTime = 0;
+                        break;
+                    case 'KeyF':
+                        e.preventDefault();
+                        if (audio.requestFullscreen) {
+                            audio.requestFullscreen();
+                        }
+                        break;
+                }
+            });
+            
+            // 터치 제스처 지원 (모바일)
+            let gestureTouchStartTime = 0;
+            let gestureTouchStartY = 0;
+            
+            document.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.custom-audio-player')) {
+                    gestureTouchStartTime = Date.now();
+                    gestureTouchStartY = e.touches[0].clientY;
+                }
+            });
+            
+            document.addEventListener('touchend', (e) => {
+                if (e.target.closest('.custom-audio-player')) {
+                    const touchEndTime = Date.now();
+                    const touchDuration = touchEndTime - gestureTouchStartTime;
+                    const touchEndY = e.changedTouches[0].clientY;
+                    const touchDistance = Math.abs(touchEndY - gestureTouchStartY);
+                    
+                    // 길게 누르기 (1초 이상) - 음소거 토글
+                    if (touchDuration > 1000 && touchDistance < 50) {
+                        volumeBtn.click();
+                    }
+                }
+            });
+        }
+
+        // Initialize all functionality when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('페이지 로드 완료, 초기화 중...');
+
+            initEyeMovement();
+            initMobileMenu();
+            initFloatingTopBtn();
+            // initAudioPlayer(); // 커스텀 플레이어 제거됨
+
+        });
+    </script>
+</body>
+</html>
