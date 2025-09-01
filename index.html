@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>필라테스 호두 강사 교육 포털 - 프로그램 가이드</title>
     <meta name="description" content="필라테스 호두 강사 및 직원을 위한 전문 프로그램 교육 가이드">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https:; media-src 'self' https:;">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -610,6 +614,18 @@
         .simple-audio-player {
             width: 100%;
             max-width: 600px;
+        }
+        
+        /* 다운로드 방지 스타일 */
+        .simple-audio-player::-webkit-media-controls-download-button {
+            display: none !important;
+        }
+        
+        .simple-audio-player::-webkit-media-controls-panel {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         
         /* PC 대화면에서 오디오 플레이어 완전 중앙 정렬 */
@@ -1459,7 +1475,7 @@
                 <!-- 숨겨진 오디오 요소 -->
                 <!-- 기본 오디오 플레이어 -->
                 <div class="simple-audio-container">
-                    <audio controls preload="auto" class="simple-audio-player">
+                    <audio controls preload="auto" class="simple-audio-player" controlsList="nodownload" oncontextmenu="return false;">
                         <source src="https://raw.githubusercontent.com/ysl1016/pilateshodu-program-guide/main/data/pilateshodu-program-guide.m4a" type="audio/mp4">
                         브라우저가 오디오 재생을 지원하지 않습니다.
                     </audio>
@@ -2291,7 +2307,54 @@
             toggleTopButton();
         }
         
-
+        // 오디오 다운로드 방지 함수
+        function preventAudioDownload(audioElement) {
+            if (!audioElement) return;
+            
+            // 오른쪽 클릭 메뉴 비활성화
+            audioElement.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // 키보드 단축키로 다운로드 방지
+            audioElement.addEventListener('keydown', function(e) {
+                // Ctrl+S, Ctrl+Shift+S, F12 등 다운로드 관련 키 조합 방지
+                if ((e.ctrlKey && (e.key === 's' || e.key === 'S')) || 
+                    (e.ctrlKey && e.shiftKey && (e.key === 's' || e.key === 'S')) ||
+                    e.key === 'F12') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            
+            // 개발자 도구 감지 및 방지
+            let devtools = {open: false, orientation: null};
+            setInterval(() => {
+                const threshold = 160;
+                if (window.outerHeight - window.innerHeight > threshold || 
+                    window.outerWidth - window.innerWidth > threshold) {
+                    if (!devtools.open) {
+                        devtools.open = true;
+                        console.warn('개발자 도구 사용이 감지되었습니다.');
+                    }
+                } else {
+                    devtools.open = false;
+                }
+            }, 500);
+            
+            // 오디오 요소 보호
+            Object.defineProperty(audioElement, 'src', {
+                get: function() {
+                    return this.getAttribute('src');
+                },
+                set: function(value) {
+                    // src 변경 시도 방지
+                    console.warn('오디오 소스 변경이 차단되었습니다.');
+                    return false;
+                }
+            });
+        }
         
         // 오디오 플레이어 초기화 함수
         function initAudioPlayer() {
@@ -2301,6 +2364,9 @@
                 console.error('오디오 요소를 찾을 수 없습니다!');
                 return;
             }
+            
+            // 다운로드 방지 기능 추가
+            preventAudioDownload(audio);
             
             const playPauseBtn = document.getElementById('play-pause-btn');
             const playPauseIcon = playPauseBtn.querySelector('i');
@@ -2778,6 +2844,12 @@
             initMobileMenu();
             initFloatingTopBtn();
             // initAudioPlayer(); // 커스텀 플레이어 제거됨
+            
+            // 모든 오디오 요소에 다운로드 방지 적용
+            const allAudioElements = document.querySelectorAll('audio');
+            allAudioElements.forEach(audio => {
+                preventAudioDownload(audio);
+            });
 
         });
     </script>
